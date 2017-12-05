@@ -1,13 +1,4 @@
-from array import array
-
-
-def parse(filename):
-    arr = array('i')
-    with open(filename) as file:
-
-        for line in file:
-            arr.append(int(line))
-    return arr
+from puzzle1_jumps import parse
 
 
 def get_out_of_maze(maze):
@@ -17,14 +8,18 @@ def get_out_of_maze(maze):
     while 0 <= position < len(maze):
         old_idx = position
         position += maze[position]
-        maze[old_idx] += 1
+        if maze[old_idx] >= 3:
+            maze[old_idx] -= 1
+        else:
+            maze[old_idx] += 1
+
         jumps += 1
 
     return jumps
 
 
 def main():
-    maze = parse("puzzle1-input/input.txt")
+    maze = parse("puzzle-input/input.txt")
 
     print(get_out_of_maze(maze))
 
