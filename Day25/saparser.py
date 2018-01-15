@@ -15,12 +15,13 @@ class SAParser:
             token = self.scanner.get_token()
 
             while SAParser._is_nonterminal_on_top(dtree_stack):
-                rule = self.grammar.get_rule(dtree_stack.peek(), token)
+                rule = self.grammar.get_rule(dtree_stack.peek(), token.type)
+                dtree_stack.pop()
                 for rule_part in rule:
                     dtree_stack.push(rule_part)
 
-            if dtree_stack.peek() != token.type:
-                raise SyntaxError("Unexpected terminal: ", repr(token))
+            if dtree_stack.pop() != token.type:
+                raise SyntaxError("Unexpected terminal: " + repr(token.type))
 
     @staticmethod
     def _is_nonterminal_on_top(stack):

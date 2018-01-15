@@ -1,15 +1,15 @@
 from terminal import TokenType
-from enum import Enum, auto
+from enum import Enum
 
 
 class NonTerminal(Enum):
-    PROGRAM = auto
-    STATE = auto
-    COMMAND_LIST = auto
-    CMD_WRITE = auto
-    CMD_MOVE = auto
-    CMD_CONTINUE = auto
-    DIR = auto
+    PROGRAM = 1
+    STATE = 2
+    COMMAND_LIST = 3
+    CMD_WRITE = 4
+    CMD_MOVE = 5
+    CMD_CONTINUE = 6
+    DIR = 7
 
 
 class Grammar:

@@ -1,4 +1,4 @@
-from parser import SAParser
+from saparser import SAParser
 from scanner import Scanner
 
 
@@ -6,4 +6,7 @@ if __name__ == "__main__":
     scanner = Scanner("input/test.txt")
 
     parser = SAParser(scanner)
-    parser.parse()
+    try:
+        parser.parse()
+    except SyntaxError as e:
+        print(e.msg)
