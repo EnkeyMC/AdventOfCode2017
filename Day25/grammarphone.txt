@@ -1,0 +1,16 @@
+PROGRAM -> begin state_name dot checksum number steps dot STATE .
+
+STATE -> in_state state_name colon if number colon COMMAND_LIST if number colon COMMAND_LIST STATE .
+
+STATE -> eof .
+
+COMMAND_LIST -> CMD_WRITE CMD_MOVE CMD_CONTINUE .
+
+CMD_WRITE -> dash write number dot .
+
+CMD_MOVE -> dash move DIR dot .
+
+CMD_CONTINUE -> dash continue state_name dot .
+
+DIR -> left .
+DIR -> right .
